@@ -1,11 +1,11 @@
 <template>
-  <div class="card">
+  <div class="card" id="album">
     <header class="card-header">
       <p class="card-header-title">{{name}}</p>
     </header>
     <div class="card-content">
       <div class="content" v-for="(elm, idx) in song" v-bind:key="idx">
-          <Song :title="elm"/>
+          <Song :title="idx" :song="elm"/>
       </div>
     </div>
   </div>
@@ -20,4 +20,7 @@ export default {
 };
 </script>
 <style scoped>
+#album{
+    background: #4db6ac;
+}
 </style>

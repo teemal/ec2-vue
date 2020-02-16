@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" id="artist">
     <header class="card-header">
       <p class="card-header-title">{{name}}</p>
     </header>
@@ -26,4 +26,8 @@ export default {
 };
 </script>
 <style scoped>
+#artist{
+    background: #b2dfdb;
+    margin-top: 30px;
+}
 </style>
