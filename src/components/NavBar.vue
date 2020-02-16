@@ -2,7 +2,7 @@
   <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="#">
-      <img src="@/assets/logo.png" height="100">
+      <img src="@/assets/logo.png" height="200" width="70">
     </a>
 
   <div id="navbarBasicExample" class="navbar-menu">
@@ -21,7 +21,8 @@ export default {};
 </script>
 <style scoped>
 .navbar{
-    background-color: #004d40;
+    background-color: #148f6c;
+    font-size: 2em;
 }
 .navbar-item{
     color: white;
