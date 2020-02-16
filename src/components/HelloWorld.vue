@@ -1,8 +1,10 @@
 <template>
   <div class="wrapper">
     <div class="columns">
-      <div class="column">
-        <button class="button is-primary"></button>
+      <div class="column is-6 is-offset-3">
+        <div v-for="(elm, idx) in this.data" v-bind:key="idx">
+          <ArtistCard :name="idx" :albs="elm" />
+        </div>
       </div>
     </div>
   </div>
@@ -10,9 +12,15 @@
 
 <script>
 import axios from 'axios';
+import ArtistCard from './ArtistCard';
+
 export default {
+  components:{
+    ArtistCard
+  },
   data () {
     return {
+      data: {}
     }
   },
   mounted () {
@@ -21,7 +29,9 @@ export default {
     //   .then(response => (console.log(response.data.bpi.USD.rate_float)))
     axios
       .get('http://localhost:3000/entities')
-      .then(response => (console.log(response)))
+      .then((response) => {
+        this.data = response.data
+      })
   }
 }
 </script>
