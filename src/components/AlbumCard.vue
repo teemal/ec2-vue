@@ -21,6 +21,6 @@ export default {
 </script>
 <style scoped>
 #album{
-    background: #4db6ac;
+    background: #1de9b6;
 }
 </style>

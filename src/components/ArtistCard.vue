@@ -27,7 +27,7 @@ export default {
 </script>
 <style scoped>
 #artist{
-    background: #b2dfdb;
+    background: #1ccf9f;
     margin-top: 30px;
 }
 </style>

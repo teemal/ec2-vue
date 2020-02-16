@@ -28,7 +28,7 @@ export default {
     //   .get('https://api.coindesk.com/v1/bpi/currentprice.json')
     //   .then(response => (console.log(response.data.bpi.USD.rate_float)))
     axios
-      .get('http://localhost:3000/entities')
+      .get('http://ec2-54-165-246-254.compute-1.amazonaws.com:3000/entities')
       .then((response) => {
         this.data = response.data
       })
