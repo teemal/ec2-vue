@@ -2,33 +2,38 @@
   <div class="home">
     <form action v-on:submit.prevent>
       <div class="field">
-          <div class="columns">
-                <div class="column is-4 is-offset-4">
-                  <input class="input" type="email" placeholder="Email" v-model="email" />  
-                </div>
-            </div>
+        <div class="columns">
+          <div class="column is-4 is-offset-4">
+            <input class="input" type="email" placeholder="Email" v-model="email" />
+          </div>
+        </div>
         <div class="field">
-            <div class="columns">
-                <div class="column is-4 is-offset-4">
-                  <input
-              class="input"
-              type="password"
-              placeholder="Password"
-              v-model="password"
-              @keydown.enter="emailLogin()"
-            />  
-                </div>
+          <div class="columns">
+            <div class="column is-4 is-offset-4">
+              <input
+                class="input"
+                type="password"
+                placeholder="Password"
+                v-model="password"
+                @keydown.enter="emailLogin()"
+              />
             </div>
+          </div>
         </div>
       </div>
-      <div class="columns is-centered">
-        <div class="column has-text-centered is-2">
-          <div class="box has-text-centered">
-            <div class="buttons has-text-center">
-              <div class="buttons">
-                <button class="button is-info" v-on:click="goToSignUp()">Sign Up</button>
-                <button class="button is-success" v-on:click="emailLogin()">Login</button>
-              </div>
+      <div class="columns">
+          <div class="column is-4 is-offset-4">
+              <div class="box has-text-centered">
+          <div class="columns">
+            <div class="column is-3 is-offset-2">
+              <button class="button is-info" v-on:click="goToSignUp()">Sign Up</button>
+            </div>
+            <div class="column is-3 is-offset-2">
+              <button class="button is-success" v-on:click="emailLogin()">Login</button>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-12">
               <img
                 src="../assets/GoogleSignUpDark.png"
                 alt
@@ -38,6 +43,7 @@
             </div>
           </div>
         </div>
+          </div>
       </div>
     </form>
   </div>
@@ -112,7 +118,10 @@ export default {
 .btn:hover {
   cursor: pointer;
 }
-.field{
-    margin-top: 20px;
+.field {
+  margin-top: 20px;
+}
+#buttons-box{
+    width: 10vw;
 }
 </style>
