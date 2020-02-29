@@ -7,6 +7,7 @@ yarn-error.log*
 *.env
 dev.env.js
 prod.env.js
+config/
 
 # Editor directories and files
 .idea
