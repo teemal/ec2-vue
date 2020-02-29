@@ -15,6 +15,7 @@
     "dotenv": "^8.2.0",
     "firebase": "^7.9.2",
     "vue": "^2.5.2",
+    "vue-firebase": "^1.0.8",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

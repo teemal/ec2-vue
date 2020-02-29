@@ -52,8 +52,6 @@
 <script>
 // @ is an alias to /src
 /*eslint-disable*/
-const firebaseApp = require("../firebase/ConfigFirebase");
-import firebase from "firebase";
 export default {
   name: "signup",
   components: {},
