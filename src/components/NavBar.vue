@@ -23,9 +23,6 @@
       </div>
       <div class="navbar-end">
         <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-light">Log in</a>
-          </div>
         </div>
       </div>
     </div>
@@ -41,6 +38,6 @@ export default {
 
 <style scoped>
 .navbar{
-  background-color: aquamarine;
+  background-color: #b2dfdb;
 }
 </style>

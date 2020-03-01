@@ -17,6 +17,7 @@
 
 <script>
 import firebase from "firebase";
+import axios from "axios";
 require("dotenv").config();
 // @ is an alias to /src
 /*eslint-disable*/
@@ -26,20 +27,33 @@ export default {
   data() {
     return {
       email: "",
-      password: ""
+      name: "",
+      id: ""
     };
   },
   methods: {
     SignInWithGoogle() {
-    //   console.log(process.env.VUE_APP_API_KEY);
       var provider = new firebase.auth.GoogleAuthProvider();
       this.$firebase
         .auth()
         .signInWithPopup(provider)
         .then(res => {
-          this.user = res;
-          var userId = res.user.uid;
-          this.$router.push("userpage/" + userId);
+          this.id = res.user.uid;
+          this.name = res.user.displayName;
+          this.email = res.user.email;
+          axios
+            .post("http://localhost:3000/save-user?id=" + this.id + "&name=" + this.name + "&email=" + this.email )
+            .then(res => {
+              console.log(res);
+                if(res.status === 200){
+                    this.$router.push('content/' + res.data);
+                }else{
+                    alert('something went wrong with login, please try again!');
+                }
+            })
+            .catch(e => {
+              console.log(e);
+            });
         })
         .catch(e => {
           alert(e);
