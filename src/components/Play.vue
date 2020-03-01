@@ -1,8 +1,13 @@
 <template>
   <div class="columns">
-    <div class="column is-3 is-offset-2">
-      <div v-for="(n, key) in name" v-bind:key="key">
+    <div class="column is-2 is-offset-2">
+      <div v-for="(n, key) in name" v-bind:key="key" v-on:click="getSongs(n)">
         <Album :data="n" />
+      </div>
+    </div>
+    <div class="column is-3 is-offset-1">
+      <div class="songs" v-for="(s, key) in this.songs" v-bind:key="key">
+        {{s}}
       </div>
     </div>
   </div>
@@ -10,17 +15,49 @@
 
 <script>
 import axios from "axios";
+import Album from "./Album";
+import Song from "./Song";
 export default {
   props: ["data"],
-  methods: {},
-  data(){
-      return{
-          name: []
-      }
+  methods: {
+    getSongs(n) {
+      axios
+        .get("http://localhost:3000/songs/for/album/?album=" + n)
+        .then(res => {
+          this.songs = res.data;
+        });
+        this.$forceUpdate();
+      console.log(this.songs);
+    }
+  },
+  watch: {
+    songs: {
+      handler: function(val) {
+        console.log("updated");
+        console.log(val);
+      },
+      deep: true
+    }
+  },
+  components: {
+    Album,
+    Song
+  },
+  data() {
+    return {
+      name: [],
+      songs: []
+    };
   },
   mounted() {
     this.name = this.data.split(",");
-    console.log(this.name);
+    // console.log(this.name);
+    axios
+      .get("http://localhost:3000/songs/for/album/?album=" + this.name[0])
+      .then(res => {
+        this.songs = res.data;
+      });
+    setTimeout(console.log("songs: " + this.songs), 3000);
   }
 };
 </script>
@@ -33,6 +70,15 @@ export default {
   background: #80cbc4;
 }
 .box:hover {
+  cursor: pointer;
+}
+.songs {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  background: #80cbc4;
+  border-radius: 2px;
+}
+.songs:hover {
   cursor: pointer;
 }
 </style>

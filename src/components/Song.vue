@@ -1,45 +1,52 @@
 <template>
-<div class="columns">
-          <div class="column is-10 is-offset-1">
-              <div class="card" id="song">
-    <img class="play" src="@/assets/play_button.png" alt width="40px" @click="playSong()" />
-    <p>{{title}}</p>
-    <audio controls autoplay v-if="this.play">
-      <source v-bind:src="song" type="audio/mpeg" />
-    </audio>
+  <div class="box">
+      <p>{{name[0]}}</p>
   </div>
-          </div>
-      </div>
 </template>
+
 <script>
+import axios from 'axios';
 export default {
-  props: ["title", "song"],
-  data() {
-    return {
-      play: false
-    };
-  },
-  methods: {
-    playSong() {
-      this.play = true;
+    props:['data'],
+    components: {
+    },
+    data(){
+        return{
+            name: []
+        }
+    },
+    methods: {
+    getAlbums() {
+      axios
+        .get("http://localhost:3000/albums/for/artist/?artist=" + this.name)
+        .then(res => {
+          if (res.status === 200) {
+            this.$router.replace("play/" + res.data);
+            console.log("ay");
+          } else {
+            alert("something went wrong with login, please try again!");
+          }
+        })
+        .catch(e => {
+          console.log(e);
+        });
     }
+  },
+  mounted() {
+    this.name = this.data.split(",");
+    console.log(this.name);
   }
-};
+}
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-#song{
-    background: #6b1de9;
-    color: white;
+.box{
+    margin-top: 2em;
+    margin-bottom: 2em;
+    background: #80cbc4;
 }
-.play{
-    margin-top: 10px;
-}
-.play:hover {
-  cursor: pointer;
-}
-.card{
-    box-shadow: 1px 3px 3px #7ee4d3;
-    border: 1 solid blue;
-    border-radius: .6em;
+.box:hover{
+    cursor: pointer;
 }
 </style>
