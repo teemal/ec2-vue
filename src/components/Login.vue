@@ -42,7 +42,7 @@ export default {
           this.name = res.user.displayName;
           this.email = res.user.email;
           axios
-            .post("http://localhost:3000/save-user?id=" + this.id + "&name=" + this.name + "&email=" + this.email )
+            .post("http://ec2-18-208-114-118.compute-1.amazonaws.com:3000/save-user?id=" + this.id + "&name=" + this.name + "&email=" + this.email )
             .then(res => {
               console.log(res);
                 if(res.status === 200){
