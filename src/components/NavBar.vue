@@ -2,7 +2,7 @@
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="#">
-        <img src="@/assets/logo.png" height="200" @click="$router.push('/')"/>
+        <img src="@/assets/logo.png" height="200" @click="$router.push('/')" />
       </a>
 
       <a
@@ -23,6 +23,10 @@
       </div>
       <div class="navbar-end">
         <div class="navbar-item">
+          <div class="buttons">
+            <!-- <a class="button is-light" @click="logOut">Log Out</a> -->
+            <router-link to="/">Log Out</router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -30,14 +34,27 @@
 </template>
 
 <script>
+// import router from 'vue-router'
 export default {
-    methods: {
+  methods: {
+    logOut() {
+      this.$firebase
+        .auth()
+        .signOut()
+        .then(function() {
+          // Sign-out successful.
+          console.log('YEET!');
+        })
+        .catch(function(error) {
+          // An error happened.
+        });
     }
+  }
 };
 </script>
 
 <style scoped>
-.navbar{
+.navbar {
   background-color: #b2dfdb;
 }
 </style>
