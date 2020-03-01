@@ -18,9 +18,9 @@ export default {
     methods: {
     getAlbums() {
       axios
-        .get("http://localhost:3000/artists/for/genre?genre=" + this.name)
+        .get("http://localhost:3000/albums/for/artist/?artist=" + this.name)
         .then(res => {
-          // console.log(res);
+          console.log(res);
           // if (res.status === 200) {
           //   this.$router.replace("");
           //   console.log("ay");
