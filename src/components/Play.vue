@@ -1,13 +1,20 @@
 <template>
-  <div class="columns">
-    <div class="column is-2 is-offset-2">
-      <div v-for="(n, key) in name" v-bind:key="key" v-on:click="getSongs(n)">
-        <Album :data="n" />
+  <div class="wrapper">
+    <div class="columns">
+      <div class="column is-6 is-offset-2">
+        <Audio :song="song"/>
       </div>
     </div>
-    <div class="column is-3 is-offset-1">
-      <div class="songs" v-for="(s, key) in this.songs" v-bind:key="key">
-        {{s}}
+    <div class="columns">
+      <div class="column is-2 is-offset-2">
+        <div v-for="(n, key) in name" v-bind:key="key" v-on:click="getSongs(n)">
+          <Album :data="n" />
+        </div>
+      </div>
+      <div class="column is-3 is-offset-1">
+        <div class="songs" v-for="(s, key) in this.songs" v-bind:key="key">
+          <div @click="getSong(s)">{{s}}</div>
+        </div>
       </div>
     </div>
   </div>
@@ -17,6 +24,8 @@
 import axios from "axios";
 import Album from "./Album";
 import Song from "./Song";
+import Audio from "./Audio"
+
 export default {
   props: ["data"],
   methods: {
@@ -26,27 +35,28 @@ export default {
         .then(res => {
           this.songs = res.data;
         });
-        this.$forceUpdate();
+      this.$forceUpdate();
       console.log(this.songs);
-    }
-  },
-  watch: {
-    songs: {
-      handler: function(val) {
-        console.log("updated");
-        console.log(val);
-      },
-      deep: true
+    },
+    getSong(s){
+        axios
+        .get("http://localhost:3000/song/?song=" + s)
+        .then(res => {
+          this.song = res.data;
+        });
+        console.log(this.song)
     }
   },
   components: {
     Album,
-    Song
+    Song,
+    Audio
   },
   data() {
     return {
       name: [],
-      songs: []
+      songs: [],
+      song: ""
     };
   },
   mounted() {
