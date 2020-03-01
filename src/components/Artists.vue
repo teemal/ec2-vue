@@ -20,13 +20,12 @@ export default {
       axios
         .get("http://localhost:3000/albums/for/artist/?artist=" + this.name)
         .then(res => {
-          console.log(res);
-          // if (res.status === 200) {
-          //   this.$router.replace("");
-          //   console.log("ay");
-          // } else {
-          //   alert("something went wrong with login, please try again!");
-          // }
+          if (res.status === 200) {
+            this.$router.replace("play/" + res.data);
+            console.log("ay");
+          } else {
+            alert("something went wrong with login, please try again!");
+          }
         })
         .catch(e => {
           console.log(e);

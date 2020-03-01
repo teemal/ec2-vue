@@ -33,7 +33,7 @@ export default new Router({
       }
     },
     {
-      path: '/content/artists/:data/play/:data',
+      path: '/content/artists/play/:data',
       name:  'Play',
       component: Play,
       props: true,
