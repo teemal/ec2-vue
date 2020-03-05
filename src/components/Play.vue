@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="columns">
       <div class="column is-6 is-offset-2">
-        <Audio :song="song"/>
+        <Audio :key="song" :song="song"/>
       </div>
     </div>
     <div class="columns">
@@ -31,7 +31,7 @@ export default {
   methods: {
     getSongs(n) {
       axios
-        .get("http://ec2-18-208-114-118.compute-1.amazonaws.com:3000/songs/for/album/?album=" + n)
+        .get("http://ec2-3-95-157-150.compute-1.amazonaws.com:3000/songs/for/album/?album=" + n)
         .then(res => {
           this.songs = res.data;
         });
@@ -40,7 +40,7 @@ export default {
     },
     getSong(s){
         axios
-        .get("http://ec2-18-208-114-118.compute-1.amazonaws.com:3000/song/?song=" + s)
+        .get("http://ec2-3-95-157-150.compute-1.amazonaws.com:3000/song/?song=" + s)
         .then(res => {
           this.song = res.data;
         });
@@ -63,7 +63,7 @@ export default {
     this.name = this.data.split(",");
     // console.log(this.name);
     axios
-      .get("http://ec2-18-208-114-118.compute-1.amazonaws.com:3000/songs/for/album/?album=" + this.name[0])
+      .get("http://ec2-3-95-157-150.compute-1.amazonaws.com:3000/songs/for/album/?album=" + this.name[0])
       .then(res => {
         this.songs = res.data;
       });

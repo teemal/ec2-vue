@@ -41,8 +41,14 @@ export default {
           this.id = res.user.uid;
           this.name = res.user.displayName;
           this.email = res.user.email;
+          console.log("stuff " + this.id, this.name, this.email)
+          // , {
+          //     pk: this.id,
+          //     sk: this.name,
+          //     email: this.email
+          //     }
           axios
-            .post("http://ec2-18-208-114-118.compute-1.amazonaws.com:3000/save-user?id=" + this.id + "&name=" + this.name + "&email=" + this.email )
+            .post("https://tj83no9v17.execute-api.us-east-1.amazonaws.com/dev/save-users?id=" + this.id + "&name=" + this.name + "&email=" + this.email)
             .then(res => {
               console.log(res);
                 if(res.status === 200){

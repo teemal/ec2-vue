@@ -1,18 +1,13 @@
 <template>
   <div class="wrapper">
-      <div class="columns">
-          <div class="column is-6 is-offset-4">
-            <audio controls>
-      <source v-bind:src="this.song" type="audio/ogg" />
-      <source v-bind:src="this.song" type="audio/mpeg" />Your browser does not support the audio tag.
-    </audio>
-          </div>
+    <div class="columns">
+      <div class="column is-6 is-offset-4">
+        <audio controls>
+          <source v-bind:src="this.song[0]" type="audio/wav" />
+          <source v-bind:src="this.song[0]" type="audio/mpeg" />Your browser does not support the audio tag.
+        </audio>
       </div>
-      <div class="columns">
-          <div class="column is-6 is-offset-4">
-              {{this.song}}
-          </div>
-      </div>
+    </div>
   </div>
 </template>
 <script>

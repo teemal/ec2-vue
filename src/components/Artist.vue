@@ -24,7 +24,7 @@ export default {
   methods: {
     getAlbums() {
       axios
-        .get("http://ec2-18-208-114-118.compute-1.amazonaws.com:3000/artists/for/genre?genre=" + this.name)
+        .get("http://ec2-3-95-157-150.compute-1.amazonaws.com:3000/artists/for/genre?genre=" + this.name)
         .then(res => {
           // console.log(res);
           // if (res.status === 200) {
