@@ -1,6 +1,11 @@
 <template>
   <div class="box">
-      <p>{{name[0]}}</p>
+      <p>{{data}}</p>
+      <img src="@/assets/playlist_button.png" alt="" width="30vw" @click="addToPlaylist(data)">
+      <div v-if="this.playBtn">
+        <input class="input" type="text" placeholder="playlist name" v-model="this.playlistName">
+        <button class="button is-primary" >Add Playlist</button>
+      </div>
   </div>
 </template>
 
@@ -12,7 +17,10 @@ export default {
     },
     data(){
         return{
-            name: []
+            name: [],
+            playlistSong: "",
+            playBtn: false,
+            playlistName: ""
         }
     },
     methods: {
@@ -29,6 +37,17 @@ export default {
         })
         .catch(e => {
           console.log(e);
+        });
+    },
+    addToPlaylist(data){
+      this.playBtn ^= true;
+      axios
+        .get("http://ec2-3-95-157-150.compute-1.amazonaws.com:3000/song/?song=" + data)
+        .then(res => {
+          this.playlistSong = res.data;
+        })
+        .then(()=>{
+          console.log(this.playlistSong)
         });
     }
   },
@@ -48,5 +67,8 @@ export default {
 }
 .box:hover{
     cursor: pointer;
+}
+.button{
+  margin-top: 3%;
 }
 </style>

@@ -12,8 +12,8 @@
         </div>
       </div>
       <div class="column is-3 is-offset-1">
-        <div class="songs" v-for="(s, key) in this.songs" v-bind:key="key">
-          <div @click="getSong(s)">{{s}}</div>
+        <div class="songs" v-for="(s, key) in this.songs" v-bind:key="key">          
+          <Song :data="s" />
         </div>
       </div>
     </div>
