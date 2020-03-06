@@ -1,6 +1,8 @@
 <template>
   <div class="wrapper">
-    <p>butt</p>
+    <div>
+        {{data}}
+    </div>
   </div>
 </template>
 

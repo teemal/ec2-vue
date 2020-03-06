@@ -5,6 +5,7 @@ import Content from '@/components/Content'
 import Artists from '@/components/Artist'
 import Play from '@/components/Play'
 import PlaylistView from '@/components/PlaylistView'
+import PlaylistSongsView from '@/components/PlaylistSongsView'
 
 Vue.use(Router)
 
@@ -46,6 +47,15 @@ export default new Router({
       path: '/playlistview/:data',
       name:  'PlaylistView',
       component: PlaylistView,
+      props: true,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/playlistSongsView/:data',
+      name:  'PlaylistSongsView',
+      component: PlaylistSongsView,
       props: true,
       meta: {
         requiresAuth: true
