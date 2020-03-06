@@ -1,10 +1,10 @@
 <template>
   <div class="box">
       <p>{{data}}</p>
-      <img src="@/assets/playlist_button.png" alt="" width="30vw" @click="addToPlaylist(data)">
+      <img src="@/assets/playlist_button.png" alt="" width="30vw" @click="toggleInput">
       <div v-if="this.playBtn">
-        <input class="input" type="text" placeholder="playlist name" v-model="this.playlistName">
-        <button class="button is-primary" >Add Playlist</button>
+        <input class="input" type="text" placeholder="playlist name" v-model="playlistName">
+        <button class="button is-primary" @click="addToPlaylist(data)">Add Playlist</button>
       </div>
   </div>
 </template>
@@ -40,15 +40,22 @@ export default {
         });
     },
     addToPlaylist(data){
-      this.playBtn ^= true;
       axios
-        .get("http://ec2-3-95-157-150.compute-1.amazonaws.com:3000/song/?song=" + data)
-        .then(res => {
-          this.playlistSong = res.data;
-        })
-        .then(()=>{
-          console.log(this.playlistSong)
-        });
+            .post("https://tj83no9v17.execute-api.us-east-1.amazonaws.com/dev/user/playlist?playlist=" + this.playlistName + "&song=" + data)
+            .then(res => {
+              console.log(res);
+                if(res.status === 200){
+                    this.playlistName =  "";
+                }else{
+                    alert('something went wrong with login, please try again!');
+                }
+            })
+            .catch(e => {
+              console.log(e);
+            });
+    },
+    toggleInput(){
+      this.playBtn ^= true;
     }
   },
   mounted() {
