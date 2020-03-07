@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="box" @click="setSong(data)">
       <p>{{data}}</p>
       <img src="@/assets/playlist_button.png" alt="" width="30vw" @click="toggleInput">
       <div v-if="this.playBtn">
@@ -38,6 +38,11 @@ export default {
         .catch(e => {
           console.log(e);
         });
+    },
+    setSong(data){
+      this.$store.dispatch('changeSon', data);
+      // console.log(this.$store.getters.SONG);
+      // console.log('fuck');
     },
     addToPlaylist(data){
       axios

@@ -11,8 +11,8 @@
           <Album :data="n" />
         </div>
       </div>
-      <div class="column is-3 is-offset-1">
-        <div class="songs" v-for="(s, key) in this.songs" v-bind:key="key">          
+      <div class="column is-3 is-offset-1" v-if="showSong">
+        <div class="songs" v-for="(s, key) in this.songs" v-bind:key="key" @click="getSong(s)">          
           <Song :data="s" />
         </div>
       </div>
@@ -30,6 +30,7 @@ export default {
   props: ["data"],
   methods: {
     getSongs(n) {
+      this.showSong = true;
       this.$store.dispatch('changeAlb', n);
       // console.log(this.$store.getters.ALBUM);
       // console.log('fuck');
@@ -59,7 +60,8 @@ export default {
     return {
       name: [],
       songs: [],
-      song: ""
+      song: "",
+      showSong: false
     };
   },
   mounted() {
