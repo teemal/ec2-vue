@@ -41,8 +41,8 @@ export default {
     },
     updateStoreArtist(n){
       this.$store.dispatch('changeArt', n);
-      console.log(this.$store.getters.ARTIST);
-      console.log('fuck');
+      // console.log(this.$store.getters.ARTIST);
+      // console.log('fuck');
       
     }
   },

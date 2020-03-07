@@ -25,15 +25,21 @@ export default new Vuex.Store({
         context.commit('changeArtist', name)
       },
       changeAlb(context, name) {
-        context.commit('changeAlb', name)
+        context.commit('changeAlbum', name)
       },
       changeSon(context, name) {
         context.commit('changeSong', name)
       }
   },
   getters: {
-      ARTIST: state =>{
-          return state.artist;
-      }
+    ARTIST: state =>{
+        return state.artist;
+    },
+    ALBUM: state =>{
+        return state.album;
+    },
+    SONG: state =>{
+        return state.song;
+    }
   }
 })

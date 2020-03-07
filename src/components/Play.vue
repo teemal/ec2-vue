@@ -30,6 +30,9 @@ export default {
   props: ["data"],
   methods: {
     getSongs(n) {
+      this.$store.dispatch('changeAlb', n);
+      // console.log(this.$store.getters.ALBUM);
+      // console.log('fuck');
       axios
         .get("http://ec2-3-95-157-150.compute-1.amazonaws.com:3000/songs/for/album/?album=" + n)
         .then(res => {
