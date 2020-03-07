@@ -1,8 +1,8 @@
 <template>
   <div class="columns">
     <div class="column is-4 is-offset-4">
-      <div v-for="(n, key) in name" v-bind:key="key">
-        <Artists :data="n" />
+      <div v-for="(n, key) in name" v-bind:key="key" @click="updateStoreArtist(n)">
+        <Artists :data="n"/>
       </div>
     </div>
   </div>
@@ -11,6 +11,7 @@
 <script>
 import Artists from './Artists'
 import axios from "axios";
+
 export default {
   props: ["data"],
   components:{
@@ -37,6 +38,12 @@ export default {
         .catch(e => {
           console.log(e);
         });
+    },
+    updateStoreArtist(n){
+      this.$store.dispatch('changeArt', n);
+      console.log(this.$store.getters.ARTIST);
+      console.log('fuck');
+      
     }
   },
   mounted() {

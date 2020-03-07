@@ -6,7 +6,9 @@ import router from './router'
 import * as firebase from "firebase";
 import VueFirebase from 'vue-firebase'
 import './../node_modules/bulma/css/bulma.css';
-// require('dotenv').config()
+// import Vuex from 'vuex';
+import store from './Store/Store'
+
 Vue.config.productionTip = false
 
 // Config firebase project
@@ -20,12 +22,12 @@ const FBCONFIG = {
   appId: process.env.VUE_APP_APPID,
   measurementId: process.env.VUE_APP_MEASUREMENTID
 };
-
 Vue.use(VueFirebase, {firebase: firebase, config: FBCONFIG});
-
+// Vue.use(Vuex);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router,
   components: { App },
   template: '<App/>'
