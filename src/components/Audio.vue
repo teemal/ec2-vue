@@ -18,9 +18,9 @@ export default {
     sendPlay(){
       var artist = this.$store.getters.ARTIST;
       var album = this.$store.getters.ALBUM;
-      var artist = this.$store.getters.SONG;
+      var song = this.$store.getters.SONG;
       axios
-      .put(
+      .post(
         "https://tj83no9v17.execute-api.us-east-1.amazonaws.com/dev/play?artist=" + artist + "&album=" + album + "&song=" + song
       )
       .then((res)=>{
